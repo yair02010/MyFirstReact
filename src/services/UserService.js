@@ -3,16 +3,23 @@ import axios from "axios";
 const api = "http://localhost:8000/users";
 
 export function checkUser(user) {
+  console.log("Request URL:", `${api}?email=${user.email}&password=${user.password}`);
   return axios
     .get(`${api}?email=${user.email}&password=${user.password}`)
     .then((res) => {
-      return res.data;
+      if (Array.isArray(res.data) && res.data.length > 0) {
+        return res.data[0];
+      } else {
+        throw new Error("User not found");
+      }
     })
     .catch((err) => {
       console.error("Error checking user:", err);
       throw err;
     });
 }
+
+
 
 export function getUserById() {
   const id = JSON.parse(localStorage.getItem("userId"));
