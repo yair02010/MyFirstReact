@@ -9,7 +9,7 @@ return axios
     return res.data;
     })
     .catch((err) => {
-      console.error("Error fetching cards:", err); // מדפיס שגיאות, אם יש
-      throw err; // כדי לוודא ששגיאות יטופלו גם בקומפוננטה
+      console.error("Error fetching cards:", err); 
+      throw err; 
     });
 }
