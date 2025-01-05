@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { checkUser } from "../services/UserService";
+import Navbar from "./NavBar";
+import "../css/login.css";
 
 function Login() {
     const navigate = useNavigate();
@@ -31,73 +33,68 @@ function Login() {
     });
 
     return (
-        <section className="vh-100">
-            <div className="container-fluid h-custom">
-                <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-md-9 col-lg-6 col-xl-5">
+        <>
+            <Navbar />
+            <div className="pageFull">
+            <section className="login-page">
+                <div className="login-container">
+                    <div className="login-image-container">
                         <img
                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                            className="img-fluid"
-                            alt="Sample image"
+                            className="login-image"
+                            alt="Sample"
                         />
                     </div>
-                    <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <div className="login-form-container">
                         <form onSubmit={formik.handleSubmit}>
-                            <div className="form-outline mb-4">
+                            <div className="login-form-group">
+                                <label htmlFor="email" className="login-label">Email Address</label>
                                 <input
                                     type="email"
                                     id="email"
-                                    className={`form-control form-control-lg ${formik.touched.email && formik.errors.email ? "is-invalid" : ""}`}
+                                    className={`login-input ${formik.touched.email && formik.errors.email ? "login-error" : ""}`}
                                     placeholder="Enter a valid email address"
                                     name="email"
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
-                                <label className="form-label" htmlFor="email">
-                                    Email Address
-                                </label>
-                                {formik.touched.email && formik.errors.email ? (
-                                    <div className="invalid-feedback">{formik.errors.email}</div>
-                                ) : null}
+                                {formik.touched.email && formik.errors.email && (
+                                    <div className="login-feedback">{formik.errors.email}</div>
+                                )}
                             </div>
 
-                            <div className="form-outline mb-3">
+                            <div className="login-form-group">
+                                <label htmlFor="password" className="login-label">Password</label>
                                 <input
                                     type="password"
                                     id="password"
-                                    className={`form-control form-control-lg ${formik.touched.password && formik.errors.password ? "is-invalid" : ""}`}
+                                    className={`login-input ${formik.touched.password && formik.errors.password ? "login-error" : ""}`}
                                     placeholder="Enter your password"
                                     name="password"
                                     value={formik.values.password}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
-                                <label className="form-label" htmlFor="password">
-                                    Password
-                                </label>
-                                {formik.touched.password && formik.errors.password ? (
-                                    <div className="invalid-feedback">{formik.errors.password}</div>
-                                ) : null}
+                                {formik.touched.password && formik.errors.password && (
+                                    <div className="login-feedback">{formik.errors.password}</div>
+                                )}
                             </div>
 
-                            <div className="text-center text-lg-start mt-4 pt-2">
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-lg"
-                                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                                >
+                            <div className="login-button-container">
+                                <button type="submit" className="login-button">
                                     Login
                                 </button>
-                                <p className="small fw-bold mt-2 pt-1 mb-0">
-                                    Don't have an account? <a href="#!" className="link-danger">Register</a>
+                                <p className="login-register-link">
+                                    Don't have an account? <a href="#!" className="login-register-anchor">Register</a>
                                 </p>
                             </div>
                         </form>
                     </div>
                 </div>
+            </section>
             </div>
-        </section>
+        </>
     );
 }
 

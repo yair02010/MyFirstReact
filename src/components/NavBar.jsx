@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { getUserById } from '../services/UserService';
+import "../css/Navbar.css";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,7 +33,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow">
+    <nav className="navbar fixed-top navbar-expand-lg shadow">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           BCard
@@ -55,10 +56,15 @@ function Navbar() {
                 About
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/fav-card">
+                Fav Cards
+              </a>
+            </li>
             {isLoggedIn && (
               <li className="nav-item">
-                <a className="nav-link" href="/fav-cards">
-                  Fav Cards
+                <a className="nav-link" href="/cards">
+                  Cards
                 </a>
               </li>
             )}
@@ -74,13 +80,13 @@ function Navbar() {
           <ul className="navbar-nav">
             {isLoggedIn ? (
               <>
-                <li className="nav-item">
+                <li className="nav-item d-flex align-items-center">
                   <a className="nav-link" href="/profile">
                     {user ? (
                       <img
                         src={user.profilePic || '/default-avatar.png'}
                         alt="Profile"
-                        style={{ width: '30px', borderRadius: '50%' }}
+                        className="profile-img"
                       />
                     ) : (
                       'Profile'
@@ -96,7 +102,7 @@ function Navbar() {
             ) : (
               <>
                 <li className="nav-item">
-                  <a className="nav-link" href="/login">
+                  <a className="nav-link" href="/">
                     Login
                   </a>
                 </li>

@@ -2,20 +2,25 @@ import { useEffect, useState } from "react";
 import { getAllCards } from "../services/CardsService";
 import Navbar from "./NavBar";
 import { getUserById } from "../services/UserService";
+import "../css/Cards.css";
 
 function Cards() {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
-  const [isAdmin,setisAdmin] =useState(false);
-    useEffect(()=>{
-    if(localStorage.getItem("userId" != null)){
-        getUserById().then((res)=>{
-            setisAdmin(res.data.isAdmin)
-        }) 
-        .catch((err)=>{console.log(err);
+  const [isAdmin, setisAdmin] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("userId") != null) {
+      getUserById()
+        .then((res) => {
+          setisAdmin(res.data.isAdmin);
         })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  })
+  }, []);
+
   useEffect(() => {
     getAllCards()
       .then((data) => {
@@ -29,23 +34,18 @@ function Cards() {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <h4 className="display-4 my-3">Cards</h4>
-        {isAdmin&&<button className="btn btn-success">Add Prodact</button>}
+      <div className="cards-container">
+        <h4 className="cards-header">Cards</h4>
+        {isAdmin && <button className="btn btn-success">Add Product</button>}
         {error && <p className="text-danger">{error}</p>}
-        <div className="row mt-3">
+        <div className="cards-grid">
           {cards.length > 0 ? (
             cards.map((card) => (
-              <div
-                className="card col-md-4 mb-4"
-                key={card.id}
-                style={{ width: "18rem" }}
-              >
+              <div className="card" key={card.id}>
                 <img
                   className="card-img-top"
                   src={card.ImageUrl || "path/to/default-image.jpg"}
                   alt={card.ImageAlt || "Card image"}
-                  style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{card.Title}</h5>
