@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './NavBar';
 import AboutUsImage from "../css/images/AboutIMG.png";
 import "../css/About.css";
-
+import "../css/aboutRes.css"
 function About() {
   return (
     <>

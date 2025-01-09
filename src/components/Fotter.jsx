@@ -1,27 +1,29 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from "react";
+import "../css/Fotter.css";
+
 function Footer() {
   return (
-    <footer className="bg-dark text-white text-center py-4">
-      <div className="container">
-        <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-        <ul className="list-inline">
-          <li className="list-inline-item">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              Facebook
-            </a>
-          </li>
-          <li className="list-inline-item mx-3">
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              Twitter
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              LinkedIn
-            </a>
-          </li>
-        </ul>
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="footer-links">
+          <a href="/about">About Us</a>
+          <a href="/PrivacyPolicy">Privacy Policy</a>
+        </div>
+        <div className="footer-icons">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <i className="bi bi-facebook"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <i className="bi bi-twitter"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <i className="bi bi-instagram"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <i className="bi bi-linkedin"></i>
+          </a>
+        </div>
+        <p className="footer-text">© 2025 BCard. create by Yair Yerushalmi.</p>
       </div>
     </footer>
   );

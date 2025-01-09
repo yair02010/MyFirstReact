@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
 background: linear-gradient(to bottom, #f9f9f9, #e9ecef);
+margin-top: 60px;
 }
 .signup-page {
     display: flex;

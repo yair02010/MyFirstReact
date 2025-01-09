@@ -86,7 +86,7 @@ function Login() {
                                     Login
                                 </button>
                                 <p className="login-register-link">
-                                    Don't have an account? <a href="#!" className="login-register-anchor">Register</a>
+                                    Don't have an account? <a href="/register" className="login-register-anchor">Register</a>
                                 </p>
                             </div>
                         </form>

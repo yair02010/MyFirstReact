@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { getUserById } from '../services/UserService';
 import "../css/Navbar.css";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -14,6 +17,7 @@ function Navbar() {
       loadUser(userId);
     } else {
       setIsLoggedIn(false);
+      setLoading(false); // אם המשתמש לא מחובר
     }
   }, []);
 
@@ -23,6 +27,8 @@ function Navbar() {
       setUser(userData);
     } catch (error) {
       console.error('Error loading user:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,6 +37,10 @@ function Navbar() {
     setIsLoggedIn(false);
     setUser(null);
   };
+
+  if (loading) {
+    return <div className="loading-spinner">Loading...</div>; // אפשר להוסיף עיצוב מתאים
+  }
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg shadow">
@@ -56,17 +66,19 @@ function Navbar() {
                 About
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/fav-card">
-                Fav Cards
-              </a>
-            </li>
             {isLoggedIn && (
-              <li className="nav-item">
-                <a className="nav-link" href="/cards">
-                  Cards
-                </a>
-              </li>
+              <>
+                <li className="nav-item">
+                  <a className="nav-link" href="/cards">
+                    Cards
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/fav-card">
+                    Fav Cards
+                  </a>
+                </li>
+              </>
             )}
           </ul>
           <form className="d-flex me-3">
@@ -82,15 +94,7 @@ function Navbar() {
               <>
                 <li className="nav-item d-flex align-items-center">
                   <a className="nav-link" href="/profile">
-                    {user ? (
-                      <img
-                        src={user.profilePic || '/default-avatar.png'}
-                        alt="Profile"
-                        className="profile-img"
-                      />
-                    ) : (
-                      'Profile'
-                    )}
+                    <FontAwesomeIcon icon={faUser} />
                   </a>
                 </li>
                 <li className="nav-item">

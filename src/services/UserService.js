@@ -19,18 +19,14 @@ export function checkUser(user) {
     });
 }
 
-
-
 export function getUserById() {
-  const id = JSON.parse(localStorage.getItem("userId"));
+  const id = localStorage.getItem("userId")?.replace(/"/g, ""); // תיקון הבעיה של גרשיים
   if (!id) {
     throw new Error("User ID not found in localStorage");
   }
   return axios
     .get(`${api}/${id}`)
-    .then((res) => {
-      return res.data;
-    })
+    .then((res) => res.data)
     .catch((err) => {
       console.error("Error fetching user by ID:", err);
       throw err;
@@ -40,9 +36,7 @@ export function getUserById() {
 export function addUser(user) {
   return axios
     .post(api, user)
-    .then((res) => {
-      return res.data;
-    })
+    .then((res) => res.data)
     .catch((err) => {
       console.error("Error adding user:", err);
       throw err;
@@ -52,11 +46,30 @@ export function addUser(user) {
 export function checkUserExists(user) {
   return axios
     .get(`${api}?email=${user.email}`)
-    .then((res) => {
-      return res.data;
-    })
+    .then((res) => res.data)
     .catch((err) => {
       console.error("Error checking if user exists:", err);
+      throw err;
+    });
+}
+
+export function updateFavorites(userId, favorites) {
+  return axios
+    .patch(`${api}/${userId}`, { favorites })
+    .then((res) => res.data)
+    .catch((err) => {
+      console.error("Error updating favorites:", err);
+      throw err;
+    });
+}
+
+export function getUserFavorites(userId) {
+  const id = userId.replace(/"/g, ""); // הסרת גרשיים במקרה ויש
+  return axios
+    .get(`${api}/${id}`)
+    .then((res) => res.data.favorites || [])
+    .catch((err) => {
+      console.error("Error fetching user favorites:", err);
       throw err;
     });
 }

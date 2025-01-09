@@ -5,7 +5,8 @@
       "name": "yair",
       "email": "yair734@gmail.com",
       "isadmin": true,
-      "password": "123456"
+      "password": "123456",
+      "favorites": []
     },
     {
       "id": "2",
@@ -31,7 +32,8 @@
       "houseNumber": "73",
       "zipCode": "45324",
       "isBusiness": false,
-      "isAdmin": false
+      "isAdmin": false,
+      "favorites": []
     }
   ],
   "cards": [
