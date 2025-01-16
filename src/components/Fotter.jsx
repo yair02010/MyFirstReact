@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-content">
         <div className="footer-links">
           <a href="/about">About Us</a>
-          <a href="/PrivacyPolicy">Privacy Policy</a>
+          <a href="/Privacy-Policy">Privacy Policy</a>
         </div>
         <div className="footer-icons">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

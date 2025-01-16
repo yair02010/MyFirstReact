@@ -4,10 +4,14 @@ import "../css/Cards.css";
 import { getUserFavorites, getUserById } from "../services/UserService";
 import { getAllCards } from "../services/CardsService";
 import Footer from "./Fotter";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import("../css/favcards.css")
 function Favorites() {
   const [favoriteCards, setFavoriteCards] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -44,12 +48,18 @@ function Favorites() {
               <div className="favorites-card" key={card.id}>
                 <img
                   className="favorites-card-img"
-                  src={card.ImageUrl || "path/to/default-image.jpg"}
-                  alt={card.ImageAlt || "Card image"}
+                  src={card.ImageUrl }
+                  alt={card.ImageAlt }
                 />
                 <div className="favorites-card-body">
                   <h5 className="favorites-card-title">{card.Title}</h5>
                   <p className="favorites-card-text">{card.Description}</p>
+                  <button
+                className="btn btn-primary"
+                onClick={() => navigate(`/cardinfo/${card.id}`)}
+              >
+                card info
+              </button>
                 </div>
               </div>
             ))

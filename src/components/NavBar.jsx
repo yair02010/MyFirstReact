@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { getUserById } from '../services/UserService';
 import "../css/Navbar.css";
-
+import { notify } from "../utils/notify";
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -17,7 +17,7 @@ function Navbar() {
       loadUser(userId);
     } else {
       setIsLoggedIn(false);
-      setLoading(false); // אם המשתמש לא מחובר
+      setLoading(false); 
     }
   }, []);
 
@@ -36,6 +36,7 @@ function Navbar() {
     localStorage.removeItem('userId');
     setIsLoggedIn(false);
     setUser(null);
+    notify("logout");
   };
 
   if (loading) {

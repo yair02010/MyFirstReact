@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { checkUser } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/login.css";
+import { notify } from "../utils/notify";
 
 function Login() {
     const navigate = useNavigate();
@@ -22,8 +23,9 @@ function Login() {
         onSubmit: (values) => {
             checkUser(values)
                 .then((user) => {
-                    navigate("/Profile");
                     localStorage.setItem("userId", JSON.stringify(user.id));
+                    notify("login")
+                    navigate("/Profile");
                 })
                 .catch((err) => {
                     alert("User not found. Please check the entered credentials.");

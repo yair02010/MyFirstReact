@@ -1,29 +1,50 @@
+// Cards.js
 import { useEffect, useState } from "react";
-import { getAllCards } from "../services/CardsService";
-import { getUserById, updateFavorites, getUserFavorites } from "../services/UserService";
+import { getAllCards, createCard } from "../services/CardsService";
+import { getUserById, getUserFavorites } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/Cards.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import AddCardModal from "../components/AddCardModal";
+import UpdateCardModal from "../components/UpdateCardModal";
 
 function Cards() {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
+  const [isBusiness, setIsBusiness] = useState(false);
+  const [openAddModal, setOpenAddModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId")?.replace(/"/g, ""); 
+    if (userId) {
+      getUserById()
+        .then((userData) => {
+          setUser(userData);
+          setIsBusiness(userData.isBusiness || false);
+        })
+        .catch((err) => {
+          console.error("Error fetching user:", err);
+          setError("Failed to fetch user data.");
+        });
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userId = localStorage.getItem("userId")?.replace(/"/g, ""); // הסרת גרשיים מיותרים
+        const userId = localStorage.getItem("userId")?.replace(/"/g, ""); 
         if (!userId) {
           setError("Please log in to view the cards.");
           return;
         }
-
-        const userData = await getUserById();
-        setUser(userData);
 
         const userFavorites = await getUserFavorites(userId);
         setFavorites(userFavorites);
@@ -44,6 +65,18 @@ function Cards() {
     fetchData();
   }, []);
 
+  const handleEditCard = (card) => {
+    const userId = user?.id; 
+    const cardOwnerId = card.ownerId.replace(/"/g, "");
+
+    if (cardOwnerId === userId) {
+      setSelectedCard(card);
+      setOpenEditModal(true);
+    } else {
+      alert("You can only edit your own cards.");
+    }
+  };
+
   const handleFavoriteClick = async (cardId) => {
     if (!user) {
       alert("Please log in to add to favorites");
@@ -56,7 +89,6 @@ function Cards() {
         : [...favorites, cardId];
 
       setFavorites(updatedFavorites);
-      await updateFavorites(user.id, updatedFavorites);
 
       setCards((prevCards) =>
         prevCards.map((card) =>
@@ -74,6 +106,11 @@ function Cards() {
       <Navbar />
       <div className="cards-container">
         <h4 className="cards-header">Cards</h4>
+        {isBusiness && (
+          <button className="btn btn-success" onClick={() => setOpenAddModal(true)}>
+            Add Card
+          </button>
+        )}
         {error && <p className="text-danger">{error}</p>}
         <div className="cards-grid">
           {cards.map((card) => (
@@ -94,11 +131,34 @@ function Cards() {
                   }}
                   onClick={() => handleFavoriteClick(card.id)}
                 />
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate(`/cardinfo/${card.id}`)}
+                >
+                  Card Info
+                </button>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => handleEditCard(card)}
+                >
+                  Edit Card
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <AddCardModal
+        show={openAddModal}
+        onHide={() => setOpenAddModal(false)}
+      />
+
+      <UpdateCardModal
+        show={openEditModal}
+        onHide={() => setOpenEditModal(false)}
+        card={selectedCard}
+      />
     </>
   );
 }

@@ -7,6 +7,8 @@ import "../css/signup.css";
 import { addUser, checkUserExists } from "../services/UserService";
 import { Navbar } from "react-bootstrap";
 import NavBar from "./NavBar"
+import { notify } from "../utils/notify";
+
 function Signup() {
   const navigate = useNavigate();
 
@@ -47,13 +49,15 @@ function Signup() {
     onSubmit: async (values) => {
       try {
         const userExists = await checkUserExists(values);
-        if (userExists.data.length) {
+        if (userExists && userExists.data && userExists.data.length) {
           alert("The email address you entered is already registered. Please use a different email or log in to your account.");
         } else {
           const newUser = await addUser({ ...values, isAdmin: false });
-          navigate("/home");
           localStorage.setItem("userId", JSON.stringify(newUser.data.id));
+          notify("singup")
+          navigate("/profile");
         }
+
       } catch (err) {
         console.error(err);
       }
@@ -130,7 +134,24 @@ function Signup() {
                   <div className="signup-error">{formik.errors.email}</div>
                 )}
               </div>
+
+              <div className="col-md-6 mb-3">
+                <label htmlFor="password" className="signup-label">password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className={`signup-input ${formik.touched.password && formik.errors.password ? "signup-error" : ""}`}
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.password && formik.errors.password && (
+                  <div className="signup-error">{formik.errors.password}</div>
+                )}
+              </div>
             </div>
+
 
             <div className="row">
               <div className="col-md-6 mb-3">
