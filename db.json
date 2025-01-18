@@ -56,7 +56,10 @@
       "zipCode": "45324",
       "isBusiness": true,
       "isAdmin": false,
-      "favorites": []
+      "favorites": [
+        "cbca",
+        "5c3d"
+      ]
     },
     {
       "id": "e6e6",
@@ -208,7 +211,7 @@
       "houseNumber": "73",
       "zipCode": "45324",
       "isBusiness": false,
-      "isAdmin": false
+      "isAdmin": true
     },
     {
       "id": "9852",
@@ -284,7 +287,7 @@
       "houseNumber": "73",
       "zipCode": "45324",
       "isBusiness": false,
-      "isAdmin": false
+      "isAdmin": true
     }
   ],
   "cards": [
@@ -390,7 +393,7 @@
       "Housenumber": "73",
       "Zip": "45324",
       "ownerId": "b5ac",
-      "isFavorite": false
+      "isFavorite": true
     }
   ]
 }

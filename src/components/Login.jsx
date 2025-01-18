@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { checkUser } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/login.css";
+import "../css/loginRes.css";
 import { notify } from "../utils/notify";
 
 function Login() {
@@ -96,6 +97,7 @@ function Login() {
                 </div>
             </section>
             </div>
+            
         </>
     );
 }

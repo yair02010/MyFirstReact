@@ -154,3 +154,7 @@
         transform: translateY(0);
     }
 }
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+}

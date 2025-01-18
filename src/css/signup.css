@@ -114,3 +114,7 @@ background: linear-gradient(to right, #6e8efb, #a777e3);
         transform: translateY(0);
     }
 }
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+}

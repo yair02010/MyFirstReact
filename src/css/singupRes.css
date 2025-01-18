@@ -1,0 +1,120 @@
+@media (max-width: 576px) {
+    .signup-container {
+        width: 90%;
+        padding: 20px;
+        margin-top: 750px;
+        border-radius: 10px;
+    }
+
+    .signup-title {
+        font-size: 1.5rem;
+    }
+
+    .signup-label {
+        font-size: 12px;
+    }
+
+    .signup-input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .signup-button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .signup-checkbox-label {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .signup-container {
+        width: 80%;
+        padding: 25px;
+        margin-top: 850px;
+    }
+
+    .signup-title {
+        font-size: 1.8rem;
+    }
+
+    .signup-label {
+        font-size: 13px;
+    }
+
+    .signup-input {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .signup-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .signup-checkbox-label {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .signup-container {
+        width: 70%;
+        padding: 30px;
+        margin-top: 450px;
+    }
+
+    .signup-title {
+        font-size: 2rem;
+    }
+
+    .signup-label {
+        font-size: 14px;
+    }
+
+    .signup-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .signup-button {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+
+    .signup-checkbox-label {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 993px),(max-width:1500px) {
+    .signup-container {
+        width: 50%;
+        padding: 40px;
+        margin-top:425px;
+    }
+
+    .signup-title {
+        font-size: 2.2rem;
+    }
+
+    .signup-label {
+        font-size: 14px;
+    }
+
+    .signup-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .signup-button {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+
+    .signup-checkbox-label {
+        font-size: 14px;
+    }
+}

@@ -1,15 +1,16 @@
-// Cards.js
 import { useEffect, useState } from "react";
-import { getAllCards, createCard } from "../services/CardsService";
-import { getUserById, getUserFavorites } from "../services/UserService";
+import { getAllCards } from "../services/CardsService";
+import { getUserById, getUserFavorites, updateFavorites } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/Cards.css";
+import "../css/CardsRes.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faSolidHeart, faPenToSquare, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import AddCardModal from "../components/AddCardModal";
 import UpdateCardModal from "../components/UpdateCardModal";
+import Footer from "./Fotter";
 
 function Cards() {
   const [cards, setCards] = useState([]);
@@ -17,30 +18,29 @@ function Cards() {
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
   const [isBusiness, setIsBusiness] = useState(false);
+  const [isAdmin, setisAdmin] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId")?.replace(/"/g, ""); 
+    const userId = localStorage.getItem("userId")?.replace(/"/g, "");
     if (userId) {
       getUserById()
         .then((userData) => {
           setUser(userData);
           setIsBusiness(userData.isBusiness || false);
+          setisAdmin(userData.isAdmin || false);
         })
-        .catch((err) => {
-          console.error("Error fetching user:", err);
-          setError("Failed to fetch user data.");
-        });
+        .catch(() => setError("Failed to fetch user data."));
     }
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userId = localStorage.getItem("userId")?.replace(/"/g, ""); 
+        const userId = localStorage.getItem("userId")?.replace(/"/g, "");
         if (!userId) {
           setError("Please log in to view the cards.");
           return;
@@ -66,10 +66,8 @@ function Cards() {
   }, []);
 
   const handleEditCard = (card) => {
-    const userId = user?.id; 
-    const cardOwnerId = card.ownerId.replace(/"/g, "");
-
-    if (cardOwnerId === userId) {
+    const userId = user?.id;
+    if (card.ownerId === userId ||  isAdmin) {
       setSelectedCard(card);
       setOpenEditModal(true);
     } else {
@@ -88,6 +86,7 @@ function Cards() {
         ? favorites.filter((id) => id !== cardId)
         : [...favorites, cardId];
 
+      await updateFavorites(user.id, updatedFavorites);
       setFavorites(updatedFavorites);
 
       setCards((prevCards) =>
@@ -106,7 +105,7 @@ function Cards() {
       <Navbar />
       <div className="cards-container">
         <h4 className="cards-header">Cards</h4>
-        {isBusiness && (
+        {(isBusiness || isAdmin) &&  (
           <button className="btn btn-success" onClick={() => setOpenAddModal(true)}>
             Add Card
           </button>
@@ -117,7 +116,7 @@ function Cards() {
             <div className="card" key={card.id}>
               <img
                 className="card-img-top"
-                src={card.ImageUrl || "path/to/default-image.jpg"}
+                src={card.ImageUrl || "default-image.jpg"}
                 alt={card.ImageAlt || "Card image"}
               />
               <div className="card-body">
@@ -131,18 +130,18 @@ function Cards() {
                   }}
                   onClick={() => handleFavoriteClick(card.id)}
                 />
-                <button
-                  className="btn btn-primary"
-                  onClick={() => navigate(`/cardinfo/${card.id}`)}
-                >
-                  Card Info
-                </button>
-                <button
-                  className="btn btn-warning"
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  className="text-warning mx-2"
+                  style={{ cursor: "pointer" }}
                   onClick={() => handleEditCard(card)}
-                >
-                  Edit Card
-                </button>
+                />
+                <FontAwesomeIcon
+                  icon={faInfoCircle}
+                  className="text-info mx-2"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate(`/cardinfo/${card.id}`)}
+                />
               </div>
             </div>
           ))}
@@ -159,6 +158,7 @@ function Cards() {
         onHide={() => setOpenEditModal(false)}
         card={selectedCard}
       />
+      <Footer/>
     </>
   );
 }

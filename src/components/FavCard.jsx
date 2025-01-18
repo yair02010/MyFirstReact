@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import Navbar from "./NavBar";
-import "../css/Cards.css";
+import "../css/favcards.css";
+import "../css/favCardRes.css";
 import { getUserFavorites, getUserById } from "../services/UserService";
 import { getAllCards } from "../services/CardsService";
-import Footer from "./Fotter";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Fotter";
 
-import("../css/favcards.css")
 function Favorites() {
   const [favoriteCards, setFavoriteCards] = useState([]);
   const [error, setError] = useState(null);
@@ -16,7 +15,7 @@ function Favorites() {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const userId = localStorage.getItem("userId");
+        const userId = localStorage.getItem("userId")?.replace(/"/g, "");
         if (!userId) {
           setError("Please log in to view favorite cards.");
           return;
@@ -48,18 +47,18 @@ function Favorites() {
               <div className="favorites-card" key={card.id}>
                 <img
                   className="favorites-card-img"
-                  src={card.ImageUrl }
-                  alt={card.ImageAlt }
+                  src={card.ImageUrl || "default-image.jpg"}
+                  alt={card.ImageAlt || "Card image"}
                 />
                 <div className="favorites-card-body">
                   <h5 className="favorites-card-title">{card.Title}</h5>
                   <p className="favorites-card-text">{card.Description}</p>
                   <button
-                className="btn btn-primary"
-                onClick={() => navigate(`/cardinfo/${card.id}`)}
-              >
-                card info
-              </button>
+                    className="btn btn-primary"
+                    onClick={() => navigate(`/cardinfo/${card.id}`)}
+                  >
+                    Card Info
+                  </button>
                 </div>
               </div>
             ))
@@ -68,8 +67,9 @@ function Favorites() {
           )}
         </div>
       </div>
-    </>
-  );
+          <Footer/>
+
+    </>  );
 }
 
 export default Favorites;

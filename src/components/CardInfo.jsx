@@ -4,6 +4,7 @@ import Navbar from "./NavBar";
 import Footer from "./Fotter";
 import { getCardById } from "../services/CardsService";
 import "../css/CardInfo.css";
+import "../css/CardInfoRes.css";
 
 function CardInfo() {
   const { id } = useParams();
@@ -72,6 +73,7 @@ function CardInfo() {
     ></iframe>
   </div>
 </div>
+<Footer/>
     </>
   );
 }

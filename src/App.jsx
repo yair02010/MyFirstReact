@@ -20,6 +20,7 @@ import About from "./components/About";
 import FavCard from "./components/FavCard";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CardInfo from "./components/CardInfo";
+import MyBizzCard from "./components/MyBizzCard";
 
 function App() {
   return (
@@ -38,8 +39,8 @@ function App() {
           <Route path="/fav-card" element={<FavCard />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cardinfo/:id" element={<CardInfo />} />
+          <Route path="/myBizzCard/" element={<MyBizzCard />} />
         </Routes>
-        <Footer />
       </Router>
     </>
   );

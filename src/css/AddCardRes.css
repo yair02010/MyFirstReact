@@ -1,0 +1,85 @@
+
+@media (max-width: 576px) {
+    .form-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .submit-button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .form-container {
+        padding: 25px;
+        margin: 30px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+
+    .form-control {
+        padding: 9px;
+        font-size: 15px;
+    }
+
+    .submit-button {
+        padding: 9px;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .form-container {
+        padding: 30px;
+        margin: 40px auto;
+        width: 80%;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-control {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .submit-button {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .form-container {
+        max-width: 1000px;
+        padding: 40px;
+    }
+
+    .form-title {
+        font-size: 26px;
+    }
+
+    .form-control {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .submit-button {
+        padding: 12px;
+        font-size: 18px;
+    }
+}

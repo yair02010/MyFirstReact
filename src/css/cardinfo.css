@@ -1,11 +1,52 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --card-bg: #f9f9f9;
+    --card-border: #ddd;
+    --header-color: #007bff;
+    --error-color: #ff0000;
+    --footer-color: #666666;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --card-border: #444444;
+    --header-color: #4a90e2;
+    --error-color: #ff6b6b;
+    --footer-color: #bbbbbb;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+html,
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-info-container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 400px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-top: 550px;
 }
 
 .card-info-header {
@@ -13,34 +54,35 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #007bff;
+    color: var(--header-color);
 }
 
 .card-info-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--card-bg);
 }
 
 .card-info-title {
     font-size: 22px;
     margin-bottom: 15px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .card-info-text {
     margin-bottom: 10px;
     font-size: 16px;
     line-height: 1.6;
+    color: var(--text-color);
 }
 
 .card-info-text strong {
-    color: #555;
+    color: var(--text-color);
 }
 
 .card-info-error {
-    color: #ff0000;
+    color: var(--error-color);
     text-align: center;
     font-size: 18px;
 }
@@ -49,12 +91,12 @@
     margin-top: 30px;
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: var(--footer-color);
 }
 
 .card-info-map {
     margin-top: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     overflow: hidden;
 }
@@ -65,7 +107,7 @@
     height: auto;
     margin-bottom: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--shadow-color);
     display: block;
     margin: 0 auto;
 }

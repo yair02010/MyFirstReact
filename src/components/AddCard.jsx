@@ -2,7 +2,8 @@ import React from "react";
 import { useFormik } from "formik";
 import { addCardVal } from "../validation/addCardval";
 import { createCard } from "../services/CardsService";
-
+import "../css/addcard.css"
+import "../css/AddCardRes.css"
 function AddCard({ onHide, requestRender }) {
   const formik = useFormik({
     initialValues: {

@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/signup.css";
+import "../css/singupRes.css";
 import { addUser, checkUserExists } from "../services/UserService";
 import { Navbar } from "react-bootstrap";
 import NavBar from "./NavBar"

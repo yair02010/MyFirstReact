@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./NavBar";
 import "../css/privacyPolicy.css";
+import Footer from "./Fotter";
 
 function PrivacyPolicy() {
   return (
@@ -49,6 +50,7 @@ function PrivacyPolicy() {
         </p>
         <p className="privacy-policy-text">Last updated: January 2025</p>
       </div>
+          <Footer/>
     </>
   );
 }

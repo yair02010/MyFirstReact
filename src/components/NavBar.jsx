@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { getUserById } from '../services/UserService';
 import "../css/Navbar.css";
 import { notify } from "../utils/notify";
+
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -17,7 +27,7 @@ function Navbar() {
       loadUser(userId);
     } else {
       setIsLoggedIn(false);
-      setLoading(false); 
+      setLoading(false);
     }
   }, []);
 
@@ -40,8 +50,14 @@ function Navbar() {
   };
 
   if (loading) {
-    return <div className="loading-spinner">Loading...</div>; // אפשר להוסיף עיצוב מתאים
+    return <div className="loading-spinner">Loading...</div>;
   }
+
+  const userIcon = user?.isAdmin 
+    ? faUserTie 
+    : user?.isBusiness 
+    ? faUserTie 
+    : faUser;
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg shadow">
@@ -95,7 +111,7 @@ function Navbar() {
               <>
                 <li className="nav-item d-flex align-items-center">
                   <a className="nav-link" href="/profile">
-                    <FontAwesomeIcon icon={faUser} />
+                    <FontAwesomeIcon icon={userIcon} />
                   </a>
                 </li>
                 <li className="nav-item">
@@ -118,6 +134,14 @@ function Navbar() {
                 </li>
               </>
             )}
+            <li className="nav-item">
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => setDarkMode(!darkMode)}
+              >
+                {darkMode ? "Light Mode" : "Dark Mode"}
+              </button>
+            </li>
           </ul>
         </div>
       </div>

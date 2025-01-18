@@ -1,5 +1,25 @@
+:root {
+    --navbar-bg: linear-gradient(135deg, #4A90E2, #007AFF);
+    --navbar-link-color: #ffffff;
+    --navbar-link-hover: #cce7ff;
+    --form-border: #cce7ff;
+    --btn-danger-border: #ff6b6b;
+    --btn-danger-bg-hover: #ff6b6b;
+    --profile-img-border: none;
+}
+
+body.dark-mode {
+    --navbar-bg: linear-gradient(135deg, #1c1c1c, #333333);
+    --navbar-link-color: #ffffff;
+    --navbar-link-hover: #bbbbbb;
+    --form-border: #444444;
+    --btn-danger-border: #ff6b6b;
+    --btn-danger-bg-hover: #ff6b6b;
+    --profile-img-border: 1px solid #444444;
+}
+
 .navbar {
-    background: linear-gradient(135deg, #4A90E2, #007AFF);
+    background: var(--navbar-bg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
 }
@@ -7,7 +27,7 @@
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #fff !important;
+    color: var(--navbar-link-color) !important;
     text-transform: uppercase;
 }
 
@@ -16,35 +36,35 @@
 }
 
 .navbar-toggler-icon {
-    color: #fff;
+    color: var(--navbar-link-color);
 }
 
 .nav-link {
-    color: #fff !important;
+    color: var(--navbar-link-color) !important;
     font-size: 1rem;
     margin-right: 10px;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #cce7ff !important;
+    color: var(--navbar-link-hover) !important;
 }
 
 .form-control {
     border-radius: 25px;
-    border: 1px solid #cce7ff;
+    border: 1px solid var(--form-border);
     padding: 5px 15px;
     font-size: 0.9rem;
 }
 
 .btn-outline-danger {
-    color: #fff !important;
-    border: 1px solid #ff6b6b;
+    color: var(--navbar-link-color) !important;
+    border: 1px solid var(--btn-danger-border);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-outline-danger:hover {
-    background-color: #ff6b6b;
+    background-color: var(--btn-danger-bg-hover);
     color: #fff !important;
 }
 
@@ -54,4 +74,5 @@
     border-radius: 50%;
     object-fit: cover;
     margin-left: 10px;
+    border: var(--profile-img-border);
 }

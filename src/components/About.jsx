@@ -3,6 +3,7 @@ import Navbar from './NavBar';
 import AboutUsImage from "../css/images/AboutIMG.png";
 import "../css/About.css";
 import "../css/aboutRes.css"
+import Footer from './Fotter';
 function About() {
   return (
     <>
@@ -55,6 +56,7 @@ function About() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

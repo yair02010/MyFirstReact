@@ -1,36 +1,13 @@
-@media (max-width: 1200px) {
-    .about-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .about-section .img-fluid {
-        max-width: 65%;
-    }
+.about-section {
+    max-width: 1200px;
+    width: 90%;
+    padding: 60px 20px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 576px) {
     .about-section {
         padding: 40px 15px;
-        margin-top: 350px;
-    }
-
-    .about-section h1 {
-        font-size: 2.2rem;
-    }
-
-    .about-section h2 {
-        font-size: 2rem;
-    }
-
-    .about-section .img-fluid {
-        max-width: 75%;
-    }
-}
-
-@media (max-width: 767px) {
-    .about-section {
-        padding: 30px 10px;
-        margin-top: 650px;
+        margin-top: 1250px;
     }
 
     .about-section h1 {
@@ -38,41 +15,178 @@
         text-align: center;
     }
 
-    .about-section h2 {
-        font-size: 1.8rem;
-    }
-
     .about-section p.lead {
         font-size: 1rem;
     }
 
-    .about-section .img-fluid {
-        max-width: 85%;
-    }
-}
-
-@media (max-width: 576px) {
-    .about-section {
-        padding: 20px 5px;
-    }
-
-    .about-section h1 {
-        font-size: 1.8rem;
-    }
-
-    .about-section h2 {
-        font-size: 1.6rem;
-    }
-
-    .about-section p.lead {
+    .about-section p {
         font-size: 0.9rem;
     }
 
+    .about-section .img-fluid {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .about-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-section .text-center i {
+        font-size: 2.5rem;
+    }
+
+    .about-section .text-center h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-section .text-center p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 763px) {
+    .about-section {
+        padding: 50px 20px;
+        margin-top: 1250px;
+    }
+
+    .about-section h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .about-section p.lead {
+        font-size: 1.1rem;
+    }
+
     .about-section p {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .about-section .img-fluid {
-        max-width: 95%;
+        max-width: 80%;
+        border-radius: 12px;
+    }
+
+    .about-section h2 {
+        font-size: 2rem;
+    }
+
+    .about-section .text-center i {
+        font-size: 3rem;
+    }
+
+    .about-section .text-center h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 762px) and (max-width: 992px) {
+    .about-section {
+        padding: 60px 25px;
+        margin-top: 900px;
+    }
+
+    .about-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-section p.lead {
+        font-size: 1.2rem;
+    }
+
+    .about-section p {
+        font-size: 1.1rem;
+    }
+
+    .about-section .img-fluid {
+        max-width: 65%;
+        border-radius: 12px;
+    }
+
+    .about-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-section .text-center i {
+        font-size: 3.2rem;
+    }
+
+    .about-section .text-center h3 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+    .about-section {
+        padding: 60px 30px;
+        margin-top: 900px;
+    }
+
+    .about-section h1 {
+        font-size: 2.8rem;
+    }
+
+    .about-section p.lead {
+        font-size: 1.2rem;
+    }
+
+    .about-section p {
+        font-size: 1.1rem;
+    }
+
+    .about-section .img-fluid {
+        max-width: 55%;
+        border-radius: 15px;
+    }
+
+    .about-section h2 {
+        font-size: 2.4rem;
+    }
+
+    .about-section .text-center i {
+        font-size: 3.5rem;
+    }
+
+    .about-section .text-center h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    .about-section {
+        padding: 70px 40px;
+        margin-top: 700px;
+        max-width: 1400px;
+    }
+
+    .about-section h1 {
+        font-size: 3rem;
+    }
+
+    .about-section p.lead {
+        font-size: 1.3rem;
+    }
+
+    .about-section p {
+        font-size: 1.2rem;
+    }
+
+    .about-section .img-fluid {
+        max-width: 50%;
+        border-radius: 20px;
+    }
+
+    .about-section h2 {
+        font-size: 2.6rem;
+    }
+
+    .about-section .text-center i {
+        font-size: 4rem;
+    }
+
+    .about-section .text-center h3 {
+        font-size: 2rem;
     }
 }

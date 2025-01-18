@@ -1,0 +1,154 @@
+@media (max-width: 576px) {
+    .card-info-container {
+        padding: 15px;
+        margin-top: 750px;
+    }
+
+    .card-info-header {
+        font-size: 24px;
+    }
+
+    .card-info-title {
+        font-size: 18px;
+    }
+
+    .card-info-text {
+        font-size: 14px;
+    }
+
+    .card-info-error {
+        font-size: 16px;
+    }
+
+    .card-info-footer {
+        font-size: 12px;
+    }
+
+    .card-info-image {
+        width: 100%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .card-info-container {
+        padding: 20px;
+        margin-top: 750px;
+    }
+
+    .card-info-header {
+        font-size: 26px;
+    }
+
+    .card-info-title {
+        font-size: 20px;
+    }
+
+    .card-info-text {
+        font-size: 15px;
+    }
+
+    .card-info-error {
+        font-size: 17px;
+    }
+
+    .card-info-footer {
+        font-size: 13px;
+    }
+
+    .card-info-image {
+        width: 80%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .card-info-container {
+        padding: 25px;
+        margin-top: 750px;
+    }
+
+    .card-info-header {
+        font-size: 28px;
+    }
+
+    .card-info-title {
+        font-size: 22px;
+    }
+
+    .card-info-text {
+        font-size: 16px;
+    }
+
+    .card-info-error {
+        font-size: 18px;
+    }
+
+    .card-info-footer {
+        font-size: 14px;
+    }
+
+    .card-info-image {
+        width: 70%;
+    }
+}
+
+@media (min-width: 993px) {
+    .card-info-container {
+        padding: 30px;
+        margin-top: 750px;
+    }
+
+    .card-info-header {
+        font-size: 30px;
+    }
+
+    .card-info-title {
+        font-size: 24px;
+    }
+
+    .card-info-text {
+        font-size: 18px;
+    }
+
+    .card-info-error {
+        font-size: 20px;
+    }
+
+    .card-info-footer {
+        font-size: 15px;
+    }
+
+    .card-info-image {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-info-container {
+        padding: 40px;
+        margin-top: 650px;
+    }
+
+    .card-info-header {
+        font-size: 32px;
+    }
+
+    .card-info-title {
+        font-size: 26px;
+    }
+
+    .card-info-text {
+        font-size: 20px;
+    }
+
+    .card-info-error {
+        font-size: 22px;
+    }
+
+    .card-info-footer {
+        font-size: 16px;
+    }
+
+    .card-info-image {
+        width: 50%;
+    }
+}

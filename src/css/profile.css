@@ -1,19 +1,59 @@
+:root {
+    --bg-color: #f0f4f8;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --header-color: #2a7be2;
+    --header-line: #2a7be2;
+    --card-text: #555;
+    --card-strong: #2a7be2;
+    --footer-text: #666;
+    --footer-link: #2a7be2;
+    --footer-link-hover: #1b5bb8;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #bbbbbb;
+    --header-color: #4A90E2;
+    --header-line: #4A90E2;
+    --card-text: #aaaaaa;
+    --card-strong: #4A90E2;
+    --footer-text: #888888;
+    --footer-link: #4A90E2;
+    --footer-link-hover: #3071a9;
+    --box-shadow: rgba(255, 255, 255, 0.1);
+    --box-shadow-hover: rgba(255, 255, 255, 0.15);
+}
+
+html,
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .profile-container {
-    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    background: var(--bg-color);
     padding: 50px;
     border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--box-shadow);
     font-family: 'Poppins', sans-serif;
     max-width: 800px;
     margin: 50px auto;
-    color: #333;
-    margin-top:250px;
+    color: var(--text-color);
+    margin-top: 250px;
 }
 
 .profile-header {
     text-align: center;
     font-size: 2.8rem;
-    color: #2a7be2;
+    color: var(--header-color);
     font-weight: 700;
     margin-bottom: 40px;
     position: relative;
@@ -23,41 +63,41 @@
     content: "";
     width: 60px;
     height: 3px;
-    background: #2a7be2;
+    background: var(--header-line);
     display: block;
     margin: 10px auto 0;
     border-radius: 2px;
 }
 
 .profile-card {
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 20px 30px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px var(--box-shadow-hover);
 }
 
 .profile-icon {
     font-size: 2.5rem;
-    color: #2a7be2;
+    color: var(--header-color);
     margin-right: 20px;
 }
 
 .profile-card-text {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--card-text);
 }
 
 .profile-card-text strong {
-    color: #2a7be2;
+    color: var(--card-strong);
     font-weight: 600;
 }
 
@@ -65,16 +105,16 @@
     text-align: center;
     margin-top: 30px;
     font-size: 1.1rem;
-    color: #666;
+    color: var(--footer-text);
 }
 
 .profile-footer a {
-    color: #2a7be2;
+    color: var(--footer-link);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .profile-footer a:hover {
-    color: #1b5bb8;
+    color: var(--footer-link-hover);
 }
