@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserTie, faHome, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { getUserById } from '../services/UserService';
 import "../css/Navbar.css";
 import { notify } from "../utils/notify";
 
-function Navbar() {
+function Navbar({ setSearchTerm }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -56,14 +56,14 @@ function Navbar() {
   const userIcon = user?.isAdmin 
     ? faUserTie 
     : user?.isBusiness 
-    ? faUserTie 
+    ? faBriefcase 
     : faUser;
 
   return (
     <nav className="navbar fixed-top navbar-expand-lg shadow">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          BCard
+          BCard <FontAwesomeIcon icon={faHome} />
         </a>
         <button
           className="navbar-toggler"
@@ -95,16 +95,17 @@ function Navbar() {
                     Fav Cards
                   </a>
                 </li>
+                {(user?.isBusiness || user?.isAdmin )&& (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/myBizzCard">
+                      My Cards
+                    </a>
+                  </li>
+                )}
               </>
             )}
           </ul>
           <form className="d-flex me-3">
-            <input
-              className="form-control"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
           </form>
           <ul className="navbar-nav">
             {isLoggedIn ? (

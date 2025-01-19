@@ -42,7 +42,13 @@ export function addUser(user) {
 export function checkUserExists(user) {
   return axios
     .get(`${api}?email=${user.email}`)
-    .then((res) => res.data)
+    .then((res) => {
+      if (Array.isArray(res.data) && res.data.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    })
     .catch((err) => {
       throw err;
     });
@@ -61,7 +67,13 @@ export function getUserFavorites(userId) {
   const id = userId.replace(/"/g, "");
   return axios
     .get(`${api}/${id}`)
-    .then((res) => res.data.favorites || [])
+    .then((res) => {
+      if (res.data && Array.isArray(res.data.favorites)) {
+        return res.data.favorites;
+      } else {
+        return [];
+      }
+    })
     .catch((err) => {
       throw err;
     });

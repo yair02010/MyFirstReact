@@ -2,13 +2,10 @@ import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "../css/signup.css";
-import "../css/singupRes.css";
 import { addUser, checkUserExists } from "../services/UserService";
-import { Navbar } from "react-bootstrap";
-import NavBar from "./NavBar"
+import NavBar from "./NavBar";
 import { notify } from "../utils/notify";
+import "../css/signup.css";
 
 function Signup() {
   const navigate = useNavigate();
@@ -50,17 +47,22 @@ function Signup() {
     onSubmit: async (values) => {
       try {
         const userExists = await checkUserExists(values);
-        if (userExists && userExists.data && userExists.data.length) {
+        if (userExists) {
           alert("The email address you entered is already registered. Please use a different email or log in to your account.");
-        } else {
-          const newUser = await addUser({ ...values, isAdmin: false });
-          localStorage.setItem("userId", JSON.stringify(newUser.data.id));
-          notify("singup")
-          navigate("/profile");
+          return;
         }
 
+        const newUser = await addUser({ ...values, isAdmin: false });
+        if (!newUser || !newUser.id) {
+          throw new Error("User ID not returned from server");
+        }
+
+        localStorage.setItem("userId", JSON.stringify(newUser.id));
+        notify("signup");
+        navigate("/profile");
       } catch (err) {
-        console.error(err);
+        console.error("Error during user registration:", err.message);
+        alert("Registration failed. Please try again.");
       }
     },
   });
@@ -90,7 +92,7 @@ function Signup() {
               </div>
 
               <div className="col-md-6 mb-3">
-                <label htmlFor="middleName" className="signup-label">Middle Name (Optional)</label>
+                <label htmlFor="middleName" className="signup-label">Middle Name</label>
                 <input
                   type="text"
                   id="middleName"
@@ -135,9 +137,11 @@ function Signup() {
                   <div className="signup-error">{formik.errors.email}</div>
                 )}
               </div>
+            </div>
 
+            <div className="row">
               <div className="col-md-6 mb-3">
-                <label htmlFor="password" className="signup-label">password</label>
+                <label htmlFor="password" className="signup-label">Password</label>
                 <input
                   type="password"
                   id="password"
@@ -151,10 +155,7 @@ function Signup() {
                   <div className="signup-error">{formik.errors.password}</div>
                 )}
               </div>
-            </div>
 
-
-            <div className="row">
               <div className="col-md-6 mb-3">
                 <label htmlFor="phone" className="signup-label">Phone Number</label>
                 <input
@@ -170,15 +171,30 @@ function Signup() {
                   <div className="signup-error">{formik.errors.phone}</div>
                 )}
               </div>
+            </div>
 
+            <div className="row">
               <div className="col-md-6 mb-3">
-                <label htmlFor="imageUrl" className="signup-label">Image URL (Optional)</label>
+                <label htmlFor="imageUrl" className="signup-label">Image URL</label>
                 <input
                   type="text"
                   id="imageUrl"
                   name="imageUrl"
                   className={`signup-input ${formik.touched.imageUrl && formik.errors.imageUrl ? "signup-error" : ""}`}
                   value={formik.values.imageUrl}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+
+              <div className="col-md-6 mb-3">
+                <label htmlFor="imageAlt" className="signup-label">Image Alt Text</label>
+                <input
+                  type="text"
+                  id="imageAlt"
+                  name="imageAlt"
+                  className="signup-input"
+                  value={formik.values.imageAlt}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
