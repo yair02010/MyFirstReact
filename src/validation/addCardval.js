@@ -20,11 +20,9 @@ export const addCardVal = Yup.object({
     .required("Phone is required")
     .matches(/^\+?\d{1,14}$/, "Phone number must be valid"),
   Web: Yup.string()
-    .required("Website is required")
-    .url("Invalid URL"),
+    .required("Website is required"),
   ImageUrl: Yup.string()
-    .required("Image URL is required")
-    .url("Invalid Image URL"),
+    .required("Image URL is required"),
   ImageAlt: Yup.string()
     .required("Image Alt is required")
     .min(2, "Image Alt must be at least 2 characters")

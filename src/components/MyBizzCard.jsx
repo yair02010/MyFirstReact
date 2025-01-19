@@ -3,6 +3,7 @@ import { getAllCards } from "../services/CardsService";
 import { getUserById } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/Mybizz.css";
+import "../css/MybizzRes.css";
 import Footer from "./Fotter";
 
 function MyCards() {
