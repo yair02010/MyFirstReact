@@ -42,7 +42,8 @@
       "houseNumber": "73",
       "zipCode": "45324",
       "isBusiness": false,
-      "isAdmin": true
+      "isAdmin": true,
+      "favorites": []
     },
     {
       "id": "2035",
