@@ -32,8 +32,8 @@ body,
     box-shadow: 0 15px 30px var(--shadow-color);
     font-family: 'Poppins', sans-serif;
     margin: 0 auto;
-    width: 90%;
-    max-width: 1200px;
+    width: 100VW;
+    max-width: none;
     transition: margin-top 0.3s ease, width 0.3s ease;
 }
 
