@@ -22,6 +22,11 @@ body.dark-mode {
     background: var(--navbar-bg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .navbar-brand {
@@ -33,17 +38,26 @@ body.dark-mode {
 
 .navbar-toggler {
     border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .navbar-toggler-icon {
+    font-size: 1.8rem;
     color: var(--navbar-link-color);
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-link {
     color: var(--navbar-link-color) !important;
     font-size: 1rem;
-    margin-right: 10px;
     transition: color 0.3s ease;
+    padding: 10px 15px;
 }
 
 .nav-link:hover {
@@ -75,4 +89,51 @@ body.dark-mode {
     object-fit: cover;
     margin-left: 10px;
     border: var(--profile-img-border);
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .navbar-toggler {
+        align-self: flex-end;
+    }
+
+    .navbar-toggler-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-outline-danger {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
 }

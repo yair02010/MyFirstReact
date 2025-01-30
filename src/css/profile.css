@@ -1,120 +1,118 @@
 :root {
-    --bg-color: #f0f4f8;
-    --card-bg: #ffffff;
-    --text-color: #333;
-    --header-color: #2a7be2;
-    --header-line: #2a7be2;
-    --card-text: #555;
-    --card-strong: #2a7be2;
-    --footer-text: #666;
-    --footer-link: #2a7be2;
-    --footer-link-hover: #1b5bb8;
-    --box-shadow: rgba(0, 0, 0, 0.1);
-    --box-shadow-hover: rgba(0, 0, 0, 0.15);
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --highlight-color: #2A7BEF;
+    --card-bg: #f5f5f5;
+    --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode {
     --bg-color: #121212;
+    --text-color: #ffffff;
+    --highlight-color: #4A90E2;
     --card-bg: #1e1e1e;
-    --text-color: #bbbbbb;
-    --header-color: #4A90E2;
-    --header-line: #4A90E2;
-    --card-text: #aaaaaa;
-    --card-strong: #4A90E2;
-    --footer-text: #888888;
-    --footer-link: #4A90E2;
-    --footer-link-hover: #3071a9;
-    --box-shadow: rgba(255, 255, 255, 0.1);
-    --box-shadow-hover: rgba(255, 255, 255, 0.15);
+    --card-shadow: rgba(255, 255, 255, 0.1);
 }
 
-html,
-body {
+body,
+.profile-page {
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    height: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.profile-container {
-    background: var(--bg-color);
-    padding: 50px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px var(--box-shadow);
-    font-family: 'Poppins', sans-serif;
-    max-width: 800px;
-    margin: 50px auto;
-    color: var(--text-color);
-    margin-top: 250px;
-}
-
-.profile-header {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     text-align: center;
-    font-size: 2.8rem;
-    color: var(--header-color);
-    font-weight: 700;
-    margin-bottom: 40px;
-    position: relative;
 }
 
-.profile-header::after {
-    content: "";
-    width: 60px;
-    height: 3px;
-    background: var(--header-line);
-    display: block;
-    margin: 10px auto 0;
-    border-radius: 2px;
+.profile-page h1 {
+    color: var(--highlight-color);
+    font-size: 3rem;
+    margin-top: 40px;
+}
+
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    max-width: 600px;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--highlight-color);
+}
+
+.profile-details {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
 }
 
 .profile-card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 20px 30px;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 15px var(--box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid var(--highlight-color);
 }
 
-.profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px var(--box-shadow-hover);
+.profile-card:last-child {
+    border-bottom: none;
 }
 
 .profile-icon {
-    font-size: 2.5rem;
-    color: var(--header-color);
-    margin-right: 20px;
+    font-size: 1.5rem;
+    color: var(--highlight-color);
 }
 
-.profile-card-text {
+.profile-card p {
     font-size: 1.2rem;
-    color: var(--card-text);
+    color: var(--text-color);
 }
 
-.profile-card-text strong {
-    color: var(--card-strong);
-    font-weight: 600;
+@media (max-width: 576px) {
+    .profile-page h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info {
+        width: 95%;
+    }
 }
 
-.profile-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.1rem;
-    color: var(--footer-text);
+@media (min-width: 577px) and (max-width: 768px) {
+    .profile-page h1 {
+        font-size: 2.2rem;
+    }
 }
 
-.profile-footer a {
-    color: var(--footer-link);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
+@media (min-width: 769px) and (max-width: 992px) {
+    .profile-page h1 {
+        font-size: 2.4rem;
+    }
 }
 
-.profile-footer a:hover {
-    color: var(--footer-link-hover);
+@media (min-width: 993px) {
+    .profile-page h1 {
+        font-size: 2.5rem;
+    }
 }

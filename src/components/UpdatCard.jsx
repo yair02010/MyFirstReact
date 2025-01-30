@@ -6,20 +6,25 @@ import { updateCard, createCard } from "../services/CardsService";
 function UpdateCard({ onHide, requestRender, initialCard }) {
   const formik = useFormik({
     initialValues: initialCard || {
-      Title: "",
-      Subtitle: "",
-      Description: "",
-      Email: "",
-      Phone: "",
-      Web: "",
-      ImageUrl: "",
-      ImageAlt: "",
-      State: "",
-      Country: "",
-      City: "",
-      Street: "",
-      Housenumber: "",
-      Zip: "",
+      title: "",
+      subtitle: "",
+      description: "",
+      email: "",
+      phone: "",
+      web: "",
+      image:{
+        url: "",
+        alt: ""
+      },
+      address:{
+        state: "",
+        country: "",
+        city: "",
+        street: "",
+        houseNumber: "",
+        zip: ""
+      }
+      
     },
     validationSchema: addCardVal,
     onSubmit: (values) => {
@@ -51,20 +56,20 @@ function UpdateCard({ onHide, requestRender, initialCard }) {
       <form onSubmit={formik.handleSubmit}>
         <div className="row">
           {[
-            { name: "Title", label: "Title" },
-            { name: "Subtitle", label: "Subtitle" },
-            { name: "Description", label: "Description" },
-            { name: "Email", label: "Email", type: "email" },
-            { name: "Phone", label: "Phone", type: "tel" },
-            { name: "Web", label: "Website", type: "url" },
-            { name: "ImageUrl", label: "Image URL" },
-            { name: "ImageAlt", label: "Image Alt Text" },
-            { name: "State", label: "State" },
-            { name: "Country", label: "Country" },
-            { name: "City", label: "City" },
-            { name: "Street", label: "Street" },
-            { name: "Housenumber", label: "House Number" },
-            { name: "Zip", label: "Zip Code" },
+            { name: "title", label: "Title" },
+            { name: "subtitle", label: "Subtitle" },
+            { name: "description", label: "Description" },
+            { name: "email", label: "Email", type: "email" },
+            { name: "phone", label: "Phone", type: "tel" },
+            { name: "web", label: "Website", type: "url" },
+            { name: "image.url", label: "Image URL" },
+            { name: "Image.alt", label: "Image Alt Text" },
+            { name: "address.state", label: "State" },
+            { name: "address.country", label: "Country" },
+            { name: "address.city", label: "City" },
+            { name: "address.street", label: "Street" },
+            { name: "address.houseNumber", label: "House Number" },
+            { name: "address.zip", label: "Zip Code" },
           ].map((field) => (
             <div className="col-md-6 mb-3" key={field.name}>
               <label htmlFor={field.name} className="form-label">

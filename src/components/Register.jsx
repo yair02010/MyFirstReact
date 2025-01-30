@@ -46,13 +46,32 @@ function Signup() {
     }),
     onSubmit: async (values) => {
       try {
-        const userExists = await checkUserExists(values);
-        if (userExists) {
-          alert("The email address you entered is already registered. Please use a different email or log in to your account.");
-          return;
+        const user = {
+          name:{
+            first: values.firstName,
+            middle: values.middleName,
+            last: values.lastName,
+          },
+          image: {
+            url: values.imageUrl,
+            alt: values.imageAlt
+          },
+          email: values.email,
+          password: values.password,
+          phone: values.phone,
+          address:{
+            state: values.street,
+            country: values.country,
+            city: values.city,
+            street: values.street,
+            houseNumber: values.houseNumber,
+            zip: values.zipCode,
+          },
+          
+          isBusiness: true,  
         }
 
-        const newUser = await addUser({ ...values, isAdmin: false });
+        const newUser = await addUser(user);
         if (!newUser || !newUser.id) {
           throw new Error("User ID not returned from server");
         }

@@ -25,14 +25,37 @@ function AddCard({ onHide, requestRender }) {
     },
     validationSchema: addCardVal,
     onSubmit: (values) => {
-      createCard(values)
+      const card = {
+        title: values.Title,
+        subtitle: values.Subtitle,
+        description: values.Description,
+        email: values.Email,
+        phone: values.Phone,
+        web: values.Web,
+        user_id: "",
+        image:{
+          url: values.ImageUrl,
+          alt: values.ImageAlt
+        },
+        address:{
+          state: values.State,
+          country: values.Country,
+          city: values.City,
+          street: values.Street,
+          houseNumber: values.Housenumber,
+          zip: values.Zip,
+
+        }
+      
+      }
+      createCard(card)
         .then(() => {
           onHide();
           requestRender();
           alert(`${values.Title} was added successfully`);
         })
         .catch((err) => console.log(err));
-    },
+    }
   });
 
   return (

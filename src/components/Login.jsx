@@ -7,7 +7,7 @@ import Navbar from "./NavBar";
 import "../css/login.css";
 import "../css/loginRes.css";
 import { notify } from "../utils/notify";
-
+import { jwtDecode } from "jwt-decode";
 function Login() {
     const navigate = useNavigate();
 
@@ -24,7 +24,9 @@ function Login() {
         onSubmit: (values) => {
             checkUser(values)
                 .then((user) => {
-                    localStorage.setItem("userId", JSON.stringify(user.id));
+                    const decoded = jwtDecode(user);
+                    localStorage.setItem("userId", JSON.stringify(decoded._id));
+                    localStorage.setItem("token", JSON.stringify(user));
                     notify("login")
                     navigate("/Profile");
                 })

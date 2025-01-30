@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Navbar from "./NavBar";
 import "../css/favcards.css";
 import "../css/favCardRes.css";
-import { getUserFavorites, getUserById } from "../services/UserService";
 import { getAllCards } from "../services/CardsService";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Fotter";
@@ -21,13 +20,11 @@ function Favorites() {
           return;
         }
 
-        const favorites = await getUserFavorites(userId);
         const allCards = await getAllCards();
-        const filteredCards = allCards.filter((card) => favorites.includes(card.id));
+        const filteredCards = allCards.filter((card) => card.likes.includes(userId));
 
         setFavoriteCards(filteredCards);
       } catch (err) {
-        console.error("Error fetching favorite cards:", err);
         setError("Failed to load favorite cards.");
       }
     };
@@ -38,38 +35,38 @@ function Favorites() {
   return (
     <>
       <Navbar />
-      <div className="favorites-container">
-        <h4 className="favorites-header">Favorite Cards</h4>
-        {error && <p className="favorites-error">{error}</p>}
+      <div className="favorites-page">
+        <h1>Favorite Cards</h1>
+        {error && <p className="error-message">{error}</p>}
         <div className="favorites-grid">
           {favoriteCards.length > 0 ? (
             favoriteCards.map((card) => (
-              <div className="favorites-card" key={card.id}>
+              <div className="favorites-card" key={card._id}>
                 <img
                   className="favorites-card-img"
-                  src={card.ImageUrl || "default-image.jpg"}
-                  alt={card.ImageAlt || "Card image"}
+                  src={card.image.url || "default-image.jpg"}
+                  alt={card.image.alt || "Card image"}
                 />
                 <div className="favorites-card-body">
-                  <h5 className="favorites-card-title">{card.Title}</h5>
-                  <p className="favorites-card-text">{card.Description}</p>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
                   <button
-                    className="btn btn-primary"
-                    onClick={() => navigate(`/cardinfo/${card.id}`)}
+                    className="btn-view"
+                    onClick={() => navigate(`/cardinfo/${card._id}`)}
                   >
-                    Card Info
+                    View Card
                   </button>
                 </div>
               </div>
             ))
           ) : (
-            <p>No favorite cards available at the moment.</p>
+            <p className="no-favorites">No favorite cards available at the moment.</p>
           )}
         </div>
       </div>
-          <Footer/>
-
-    </>  );
+      <Footer />
+    </>
+  );
 }
 
 export default Favorites;

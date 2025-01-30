@@ -1,44 +1,19 @@
 @media (max-width: 576px) {
-    .favorites-container {
-        margin: 150px auto;
-        margin-top: 2000px;
-    }
-
-    .favorites-header {
+    .favorites-page h1 {
         font-size: 2rem;
+        margin-top: 50px;
     }
 
     .favorites-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
-    .favorites-card-body {
-        padding: 15px;
-    }
-
-    .favorites-card-title {
-        font-size: 1.3rem;
-    }
-
-    .favorites-card-text {
-        font-size: 0.9rem;
-    }
-
-    .btn-primary {
-        font-size: 0.8rem;
-        padding: 8px 16px;
-    }
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
-    .favorites-container {
-        margin: 130px auto;
-        margin-top: 400px;
-    }
-
-    .favorites-header {
+    .favorites-page h1 {
         font-size: 2.2rem;
+        margin-top: 50px;
     }
 
     .favorites-grid {
@@ -47,13 +22,9 @@
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-    .favorites-container {
-        margin: 120px auto;
-        margin-top: 400px;
-    }
-
-    .favorites-header {
+    .favorites-page h1 {
         font-size: 2.4rem;
+        margin-top: 50px;
     }
 
     .favorites-grid {
@@ -61,14 +32,10 @@
     }
 }
 
-@media (min-width: 1200px) {
-    .favorites-container {
-        margin: 100px auto;
-        margin-top: 400px;
-    }
-
-    .favorites-header {
+@media (min-width: 993px) {
+    .favorites-page h1 {
         font-size: 2.5rem;
+        margin-top: 50px;
     }
 
     .favorites-grid {
