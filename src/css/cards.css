@@ -62,7 +62,7 @@ body.dark-mode .search-box {
     font-size: 2.5rem;
     color: var(--header-color);
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-top: 50px;
 }
 
 body.dark-mode .cards-header {
@@ -88,8 +88,10 @@ body.dark-mode .cards-header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     max-width: 300px;
     color: var(--card-text);
-
+    width: 30vw;
+    height: 45vh;
 }
+.card
 
 .card:hover {
     transform: translateY(-5px);
@@ -152,4 +154,40 @@ body.dark-mode .btnAddcard{
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+}
+.card-img-top{
+    height: 100%;
+    width: 100%;
+}
+.img-top {
+    width: 230px;
+    height: 150px;  
+}
+.card-text{
+    height: 90px;
+    overflow-y: auto;
+}
+.card-title{
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    width: 200px;
+    padding: 5px;
+}
+.card-title:hover:after{
+    content: attr(data-full-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: normal;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    width: max-content;
+    max-width: 300px;
 }

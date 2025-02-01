@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllCards, deleteCard, getCardById } from "../services/CardsService";
 import { getUserById, getUserFavorites, updateFavorites } from "../services/UserService";
 import Navbar from "./NavBar";
-import "../css/Cards.css";
-import "../css/CardsRes.css";
+import "../css/CardS.css";
+import "../css/CardSRes.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faSolidHeart, faPenToSquare, faInfoCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -62,7 +62,7 @@ function CardsList({Cards, User, Fetch}) {
       try {
         let card = await updateFavorites(cardId);
         Fetch();
-           
+          
       } catch (error) {
         
         notify("","Failed To Add Or Remove Favorite");
@@ -103,7 +103,7 @@ function CardsList({Cards, User, Fetch}) {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <h4 className="cards-header">Cards</h4>
+     
         
       {error && <p className="text-danger">{error}</p>}
       <div className="cards-grid">

@@ -1,7 +1,3 @@
-.card-img-top{
-    width: 12vw;
-    height: 12vh;
-}
 :root {
     --bg-color: #f7f9fc;
     --card-bg: #ffffff;
@@ -93,9 +89,10 @@ body.dark-mode .cards-header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     max-width: 300px;
     color: var(--card-text);
+
 }
 
-.card .card:hover {
+.card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px var(--box-shadow-hover);
 }

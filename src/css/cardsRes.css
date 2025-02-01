@@ -6,7 +6,10 @@
 
     .cards-header {
         font-size: 1.8rem;
-        margin-bottom: 15px;
+        margin-top: 75px;
+    }
+    .card-img-top{
+        width: 250px;
     }
 
     .cards-grid {
@@ -16,6 +19,8 @@
 
     .card {
         padding: 15px;
+        height: 400px;
+        width: 300px;
     }
 
     .card-title {
@@ -46,15 +51,18 @@
     .cards-header {
         font-size: 2rem;
         margin-bottom: 20px;
+        margin-top:80px
     }
 
     .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         gap: 15px;
     }
 
     .card {
         padding: 20px;
+        height: 400px;
+        width: 400px;
     }
 
     .card-title {
@@ -94,6 +102,8 @@
 
     .card {
         padding: 25px;
+        height: 450px;
+        width: 300px;
     }
 
     .card-title {
@@ -133,6 +143,7 @@
 
     .card {
         padding: 30px;
+        height: 500px;
     }
 
     .card-title {
@@ -163,6 +174,7 @@
     .cards-header {
         font-size: 3rem;
         margin-bottom: 40px;
+        margin-top: 125px;
     }
 
     .cards-grid {
@@ -172,6 +184,7 @@
 
     .card {
         padding: 35px;
+        height: 550px;
     }
 
     .card-title {
