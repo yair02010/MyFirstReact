@@ -28,7 +28,7 @@ This project is a web-based application that integrates a REST API for server-si
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git clone https://github.com/yair02010/MyFirstReact.git
    ```
 2. Navigate to the project folder:
    ```sh
