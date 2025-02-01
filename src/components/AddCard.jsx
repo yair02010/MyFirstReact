@@ -211,7 +211,7 @@ function AddCard({ onHide, requestRender }) {
 
         <div className="text-center">
           <button type="submit" className="btn btn-success mt-4 px-5">
-            Submit
+            Create
           </button>
         </div>
       </form>

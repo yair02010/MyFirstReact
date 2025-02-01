@@ -63,22 +63,8 @@
     font-weight: bold;
 }
 
-/* Dark Mode עם בורדר לבן למעלה */
-body.dark-mode .footer {
-    background: #121212;
-    color: #ffffff;
-    border-top: 2px solid #ffffff;
-}
 
-body.dark-mode .footer-links a,
-body.dark-mode .footer-icons a {
-    color: #bbbbbb;
-}
 
-body.dark-mode .footer-links a:hover,
-body.dark-mode .footer-icons a:hover {
-    color: #ffffff;
-}
 
 @media (max-width: 576px) {
     .footer {

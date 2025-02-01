@@ -4,39 +4,45 @@ import { getUserById } from "../services/UserService";
 import Navbar from "./NavBar";
 import "../css/Mybizz.css";
 import Footer from "./Fotter";
-
+import CardsList from './CardsList';
 function MyCards() {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
   const [isAuthorized, setIsAuthorized] = useState(false);
-
+  const [isBusiness, setIsBusiness] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+    const [user, setUser] = useState(null);
   useEffect(() => {
-    const fetchUserAndCards = async () => {
+    
+
+    fetchUserAndCards();
+  }, []);
+  const fetchUserAndCards = async () => {
       try {
         const userId = localStorage.getItem("userId")?.replace(/"/g, "");
         if (!userId) {
-          setError("Please log in to view your cards.");
+          notify("","Please log in to view the your cards.");
           return;
         }
-
-        const user = await getUserById(userId);
-
-        if (user.isAdmin || user.isBusiness) {
-          setIsAuthorized(true);
-          const allCards = await getAllCards();
-          const userCards = allCards.filter((card) => card.user_id === userId);
-          setCards(userCards);
-        } else {
-          setError("You are not authorized to view this page.");
+        if (userId) {
+          await getUserById()
+          .then((userData) => {
+            setUser(userData);
+            setIsBusiness(userData.isBusiness || false);
+            setIsAdmin(userData.isAdmin || false);
+          })
+          .catch((err) => notify("",err));
         }
+        const user = await getUserById(userId);
+        setIsAuthorized(true);
+        const allCards = await getAllCards();
+        const userCards = allCards.filter((card) => card.user_id === userId);
+        setCards(userCards);
+       
       } catch {
         setError("Failed to load cards. Please try again later.");
       }
     };
-
-    fetchUserAndCards();
-  }, []);
-
   return (
     <>
       <Navbar />
@@ -46,19 +52,7 @@ function MyCards() {
         {!error && isAuthorized && (
           <div className="my-cards-grid">
             {cards.length > 0 ? (
-              cards.map((card) => (
-                <div className="my-card" key={card._id}>
-                  <img
-                    className="my-card-img"
-                    src={card.image.url || "default-image.jpg"}
-                    alt={card.image.alt || "Card image"}
-                  />
-                  <div className="my-card-body">
-                    <h3>{card.title}</h3>
-                    <p>{card.description}</p>
-                  </div>
-                </div>
-              ))
+               <CardsList Cards={cards} User={user} Fetch={fetchUserAndCards}/>
             ) : (
               <p className="no-cards">No cards found.</p>
             )}

@@ -40,6 +40,7 @@ body {
     justify-content: center;
     margin-top: 50px;
 }
+
 .search-box {
     width: 50%;
     max-width: 400px;
@@ -88,7 +89,6 @@ body.dark-mode .cards-header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     max-width: 300px;
     color: var(--card-text);
-
 }
 
 .card:hover {
@@ -101,8 +101,10 @@ body.dark-mode .card {
     color: #ffffff;
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
-button .btn btn-add-card{
+
+.btn-add-card {
     background-color: green;
+    border-radius: 20px;
 }
 
 .logout-button {
@@ -124,10 +126,7 @@ body.dark-mode .logout-button {
 .logout-button:hover {
     background-color: var(--btn-primary-hover);
 }
-body.dark-mode .darckMood{
-        background: #1e1e1e;
-            color: #ffffff;
-}
+
 .pagination button {
     border-radius: 20px;
     padding: 10px 15px;
@@ -135,21 +134,39 @@ body.dark-mode .darckMood{
     background-color: white;
     cursor: pointer;
 }
-body.dark-mode .pagination button{
-    background: #fff;
-        color: #000;
+
+body.dark-mode .pagination button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
 }
-.btnAddcard{
-    background-color: lightblue;
-    border-radius: 20px;
+
+@media (max-width: 576px) {
+    .cards-grid {
+        flex-direction: column;
+    }
+
+    .search-box {
+        width: 80%;
+    }
+
+    .card {
+        width: 90%;
+    }
 }
-body.dark-mode .btnAddcard{
-                background: #fff;
-                    color: #000;
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-.pagination{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+
+@media (min-width: 993px) {
+    .card{
+        height: 10vh;
+        width: 10vw;
+    }
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

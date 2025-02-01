@@ -71,17 +71,16 @@ function Signup() {
           isBusiness: true,  
         }
 
-        const newUser = await addUser(user);
-        if (!newUser || !newUser.id) {
-          throw new Error("User ID not returned from server");
+        const response = await addUser(user);
+        if (!newUser || !newUser._id) {
+          notify("",response);  
+          return;
         }
-
-        localStorage.setItem("userId", JSON.stringify(newUser.id));
+        
         notify("signup");
-        navigate("/profile");
+        navigate("/");
       } catch (err) {
-        console.error("Error during user registration:", err.message);
-        alert("Registration failed. Please try again.");
+        notify("",err);
       }
     },
   });

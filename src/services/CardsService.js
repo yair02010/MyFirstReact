@@ -39,10 +39,14 @@ export function createCard(card) {
         }});
 }
 
-export function updateCard(card) {
-  const cleanedOwnerId = card.ownerId?.replace(/"/g, "");
-  const updatedCard = { ...card, ownerId: cleanedOwnerId };
-  return axios.put(`${api}/${card.id}`, updatedCard).then((res) => res.data);
+export function updateCard(card,id) {
+  
+   return axios.put(`${api}/${id}`, card,{
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": GetToken()
+        },
+      }).then((res) => res.data);
 }
 
 export function deleteCard(id) {

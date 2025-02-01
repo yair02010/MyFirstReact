@@ -50,8 +50,8 @@ export function addUser(user) {
   return axios
     .post(baseApi, user)
     .then((res) => res.data)
-    .catch(() => {
-      throw new Error("Failed to add user");
+    .catch((err) => {
+      return err.response.data;
     });
 }
 
@@ -73,7 +73,7 @@ export function getUserById() {
     });
 }
 
-export function updateFavorites(cardId, favorites) {
+export function updateFavorites(cardId) {
   return axios
     .patch(`${cardsApi}/${cardId}`,{ },{
       headers: {

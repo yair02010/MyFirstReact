@@ -1,3 +1,7 @@
+.card-img-top{
+    width: 12vw;
+    height: 12vh;
+}
 :root {
     --bg-color: #f7f9fc;
     --card-bg: #ffffff;
@@ -40,6 +44,7 @@ body {
     justify-content: center;
     margin-top: 50px;
 }
+
 .search-box {
     width: 50%;
     max-width: 400px;
@@ -88,10 +93,9 @@ body.dark-mode .cards-header {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     max-width: 300px;
     color: var(--card-text);
-
 }
 
-.card:hover {
+.card .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px var(--box-shadow-hover);
 }
@@ -101,7 +105,8 @@ body.dark-mode .card {
     color: #ffffff;
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
-button .btn btn-add-card{
+
+button .btn btn-add-card {
     background-color: green;
 }
 
@@ -124,10 +129,12 @@ body.dark-mode .logout-button {
 .logout-button:hover {
     background-color: var(--btn-primary-hover);
 }
-body.dark-mode .darckMood{
-        background: #1e1e1e;
-            color: #ffffff;
+
+body.dark-mode .darckMood {
+    background: #1e1e1e;
+    color: #ffffff;
 }
+
 .pagination button {
     border-radius: 20px;
     padding: 10px 15px;
@@ -135,19 +142,23 @@ body.dark-mode .darckMood{
     background-color: white;
     cursor: pointer;
 }
-body.dark-mode .pagination button{
+
+body.dark-mode .pagination button {
     background: #fff;
-        color: #000;
+    color: #000;
 }
-.btnAddcard{
+
+.btnAddcard {
     background-color: lightblue;
     border-radius: 20px;
 }
-body.dark-mode .btnAddcard{
-                background: #fff;
-                    color: #000;
+
+body.dark-mode .btnAddcard {
+    background: #fff;
+    color: #000;
 }
-.pagination{
+
+.pagination {
     display: flex;
     justify-content: center;
     align-items: center;

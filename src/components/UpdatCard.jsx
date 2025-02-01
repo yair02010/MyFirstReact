@@ -12,38 +12,49 @@ function UpdateCard({ onHide, requestRender, initialCard }) {
       email: "",
       phone: "",
       web: "",
-      image:{
-        url: "",
-        alt: ""
-      },
-      address:{
-        state: "",
-        country: "",
-        city: "",
-        street: "",
-        houseNumber: "",
-        zip: ""
-      }
+      url: "",
+      alt: "",
+      state: "",
+      country: "",
+      city: "",
+      street: "",
+      houseNumber: "",
+      zip: ""
+      
       
     },
-    validationSchema: addCardVal,
-    onSubmit: (values) => {
+    
+      onSubmit: (values) => {
       if (values.id) {
-        updateCard(values)
+        const card = {
+          title: values.title,
+          subtitle: values.subtitle,
+          description: values.description,
+          email: values.email,
+          phone: values.phone,
+          web: values.web,
+          image:{
+            url: values.url,
+            alt: values.alt,
+          },
+          address:{
+            state: values.state,
+            country: values.country,
+            city: values.city,
+            street: values.street,
+            houseNumber: values.houseNumber,
+            zip: values.zip  
+          }
+                            
+        }  
+        updateCard(card,values.id)
           .then(() => {
             onHide();
             requestRender();
             alert(`${values.Title} was updated successfully`);
           })
           .catch((err) => console.log(err));
-      } else {
-        createCard(values)
-          .then(() => {
-            onHide();
-            requestRender();
-            alert(`${values.Title} was created successfully`);
-          })
-          .catch((err) => console.log(err));
+      
       }
     },
   });
@@ -62,14 +73,14 @@ function UpdateCard({ onHide, requestRender, initialCard }) {
             { name: "email", label: "Email", type: "email" },
             { name: "phone", label: "Phone", type: "tel" },
             { name: "web", label: "Website", type: "url" },
-            { name: "image.url", label: "Image URL" },
-            { name: "Image.alt", label: "Image Alt Text" },
-            { name: "address.state", label: "State" },
-            { name: "address.country", label: "Country" },
-            { name: "address.city", label: "City" },
-            { name: "address.street", label: "Street" },
-            { name: "address.houseNumber", label: "House Number" },
-            { name: "address.zip", label: "Zip Code" },
+            { name: "url", label: "Image URL" },
+            { name: "alt", label: "Image Alt Text" },
+            { name: "state", label: "State" },
+            { name: "country", label: "Country" },
+            { name: "city", label: "City" },
+            { name: "street", label: "Street" },
+            { name: "houseNumber", label: "House Number" },
+            { name: "zip", label: "Zip Code" },
           ].map((field) => (
             <div className="col-md-6 mb-3" key={field.name}>
               <label htmlFor={field.name} className="form-label">
@@ -98,7 +109,7 @@ function UpdateCard({ onHide, requestRender, initialCard }) {
         </div>
 
         <div className="text-center">
-          <button type="submit" className="btn btn-success mt-4 px-5">
+          <button type="submit"  className="btn btn-success mt-4 px-5">
             {initialCard ? "Update" : "Create"}
           </button>
         </div>

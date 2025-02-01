@@ -33,6 +33,7 @@ body,
     color: var(--highlight-color);
     font-size: 3rem;
     margin-bottom: 20px;
+    margin-top: 50px
 }
 
 .error-message {

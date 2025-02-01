@@ -4,22 +4,29 @@ import "../css/favcards.css";
 import "../css/favCardRes.css";
 import { getAllCards } from "../services/CardsService";
 import { useNavigate } from "react-router-dom";
+import { getUserById, getUserFavorites, updateFavorites } from "../services/UserService";
 import Footer from "./Fotter";
-
+import { faV } from "@fortawesome/free-solid-svg-icons/faV";
+import CardsList from './CardsList';
 function Favorites() {
   const [favoriteCards, setFavoriteCards] = useState([]);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isBusiness, setIsBusiness] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchFavorites = async () => {
+    fetchUser();
+    fetchFavorites();
+  }, []);
+  const fetchFavorites = async () => {
       try {
         const userId = localStorage.getItem("userId")?.replace(/"/g, "");
         if (!userId) {
-          setError("Please log in to view favorite cards.");
+          notify("","Please log in to view the Favorites cards.");
           return;
         }
-
         const allCards = await getAllCards();
         const filteredCards = allCards.filter((card) => card.likes.includes(userId));
 
@@ -27,11 +34,29 @@ function Favorites() {
       } catch (err) {
         setError("Failed to load favorite cards.");
       }
-    };
+  };
+  const fetchUser = async () => {
+      try {
+        const userId = localStorage.getItem("userId")?.replace(/"/g, "");
+        if (!userId) {
+          notify("","Please log in to view the Favorites cards.");
+          return;
+        }
+        if (userId) {
+          await getUserById()
+          .then((userData) => {
+            setUser(userData);
+            setIsBusiness(userData.isBusiness || false);
+            setIsAdmin(userData.isAdmin || false);
+          })
+          .catch((err) => notify("",err));
+        }
 
-    fetchFavorites();
-  }, []);
-
+        
+      } catch (err) {
+       
+      }
+  };
   return (
     <>
       <Navbar />
@@ -40,25 +65,7 @@ function Favorites() {
         {error && <p className="error-message">{error}</p>}
         <div className="favorites-grid">
           {favoriteCards.length > 0 ? (
-            favoriteCards.map((card) => (
-              <div className="favorites-card" key={card._id}>
-                <img
-                  className="favorites-card-img"
-                  src={card.image.url || "default-image.jpg"}
-                  alt={card.image.alt || "Card image"}
-                />
-                <div className="favorites-card-body">
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                  <button
-                    className="btn-view"
-                    onClick={() => navigate(`/cardinfo/${card._id}`)}
-                  >
-                    View Card
-                  </button>
-                </div>
-              </div>
-            ))
+            <CardsList Cards={favoriteCards} User={user} Fetch={fetchFavorites}/>
           ) : (
             <p className="no-favorites">No favorite cards available at the moment.</p>
           )}
