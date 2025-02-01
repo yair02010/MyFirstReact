@@ -47,6 +47,7 @@ function Navbar({ setSearchTerm }) {
     setIsLoggedIn(false);
     setUser(null);
     notify("logout");
+    
   };
 
   if (loading) {

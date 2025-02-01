@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export function notify(action,err) {
+export function notify(action,err  ) {
     switch (action) {
         case "login":
             toast.success("You have successfully logged in!");
@@ -13,7 +13,7 @@ export function notify(action,err) {
         break;
         default:
             if(err){
-               toast.error(err); 
+            toast.error(err); 
             }
             else{
                 toast.error("An unknown action occurred.");
