@@ -8,6 +8,11 @@
         font-size: 2rem;
         margin-bottom: 30px;
     }
+        .profile-page h1 {
+        font-size: 2.2rem;
+        margin-top: 80px;
+    }
+}
 
     .profile-header::after {
         width: 50px;
@@ -40,6 +45,11 @@
         padding: 40px;
         margin-top: 500px;
     }
+        .profile-page h1 {
+        font-size: 2.2rem;
+        margin-top: 80px;
+    }
+}
 
     .profile-header {
         font-size: 2.4rem;
