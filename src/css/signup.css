@@ -1,4 +1,4 @@
-/* signup-form.css */
+/* Global Styles */
 html,
 body {
     margin: 0;
@@ -8,32 +8,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-background: linear-gradient(to bottom, #f9f9f9, #e9ecef);
-margin-top: 60px;
+    background: linear-gradient(to bottom, #f9f9f9, #e9ecef);
 }
+
 .signup-page {
     display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 190vh;
-        width: 100vw;
-        background: linear-gradient(135deg, #6e8efb, #a777e3);
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .signup-container {
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     background-color: #ffffff;
     padding: 30px;
-    margin-top: 225px;
     border-radius: 12px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.8s ease-in-out;
-    
 }
 
 .signup-title {
@@ -74,8 +71,9 @@ margin-top: 60px;
     font-size: 12px;
     margin-top: 5px;
 }
+
 .signup-button {
-background: linear-gradient(to right, #6e8efb, #a777e3);
+    background: linear-gradient(to right, #6e8efb, #a777e3);
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -89,8 +87,8 @@ background: linear-gradient(to right, #6e8efb, #a777e3);
 
 .signup-button:hover {
     background: linear-gradient(to right, #a777e3, #6e8efb);
-        transform: scale(1.02);
-        box-shadow: 0 4px 15px rgba(110, 142, 251, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(110, 142, 251, 0.4);
 }
 
 .signup-checkbox-label {
@@ -103,6 +101,150 @@ background: linear-gradient(to right, #6e8efb, #a777e3);
     margin-right: 10px;
 }
 
+/* Responsive Design Fixes */
+@media (max-width: 576px) {
+    .signup-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .signup-title {
+        font-size: 1.5rem;
+    }
+
+    .signup-label,
+    .signup-checkbox-label {
+        font-size: 12px;
+    }
+
+    .signup-input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .signup-button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .signup-container {
+        width: 100%;
+        padding: 25px;
+        height: 100%;
+    }
+
+    .signup-title {
+        font-size: 1.8rem;
+    }
+
+    .signup-label,
+    .signup-checkbox-label {
+        font-size: 13px;
+    }
+
+    .signup-input {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .signup-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .signup-container {
+        width: 70%;
+        padding: 30px;
+    }
+
+    .signup-title {
+        font-size: 2rem;
+    }
+
+    .signup-label,
+    .signup-checkbox-label {
+        font-size: 14px;
+    }
+
+    .signup-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .signup-button {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1500px) {
+    .signup-container {
+        width: 50%;
+        padding: 40px;
+        margin-top: 100px;
+    }
+
+    .signup-title {
+        font-size: 2.2rem;
+    }
+
+    .signup-label,
+    .signup-checkbox-label {
+        font-size: 14px;
+    }
+
+    .signup-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .signup-button {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+}
+
+/* Dark Mode Support */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .signup-container {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .signup-label,
+body.dark-mode .signup-checkbox-label {
+    color: #ccc;
+}
+
+body.dark-mode .signup-input {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .signup-input:focus {
+    border-color: #6e8efb;
+}
+
+body.dark-mode .signup-button {
+    background: linear-gradient(to right, #6e8efb, #a777e3);
+}
+
+body.dark-mode .signup-button:hover {
+    background: linear-gradient(to right, #a777e3, #6e8efb);
+    box-shadow: 0 4px 15px rgba(110, 142, 251, 0.6);
+}
+
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -113,8 +255,4 @@ background: linear-gradient(to right, #6e8efb, #a777e3);
         opacity: 1;
         transform: translateY(0);
     }
-}
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #ffffff;
 }

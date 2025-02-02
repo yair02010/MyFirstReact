@@ -2,7 +2,6 @@
     .signup-container {
         width: 90%;
         padding: 20px;
-        margin-top: 750px;
         border-radius: 10px;
     }
 
@@ -33,7 +32,7 @@
     .signup-container {
         width: 80%;
         padding: 25px;
-        margin-top: 850px;
+        
     }
 
     .signup-title {
@@ -63,7 +62,6 @@
     .signup-container {
         width: 70%;
         padding: 30px;
-        margin-top: 450px;
     }
 
     .signup-title {
@@ -93,7 +91,7 @@
     .signup-container {
         width: 50%;
         padding: 40px;
-        margin: top 400px;
+        margin-top: 300px;
     }
 
     .signup-title {

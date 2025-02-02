@@ -6,6 +6,7 @@ import { addUser, checkUserExists } from "../services/UserService";
 import NavBar from "./NavBar";
 import { notify } from "../utils/notify";
 import "../css/signup.css";
+import "../css/singupRes.css";
 
 function Signup() {
   const navigate = useNavigate();
