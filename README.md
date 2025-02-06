@@ -40,7 +40,7 @@ This project is a web-based application that integrates a REST API for server-si
    ```
 4. Start the development server:
    ```sh
-   npm start
+   npm run dev
    ```
 
 ## Usage
