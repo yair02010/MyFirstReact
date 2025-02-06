@@ -20,9 +20,6 @@ This project is a web-based application that integrates a REST API for server-si
 
 ## Technologies Used
 - **Frontend**: React, CSS (with responsive design), React Icons
-- **Backend**: Node.js, Express (for API handling)
-- **Database**: MongoDB
-- **Authentication**: JSON Web Token (JWT)
 - **HTTP Requests**: Axios for API calls
 
 ## Installation
