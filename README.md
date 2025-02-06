@@ -16,7 +16,6 @@ This project is a web-based application that integrates a REST API for server-si
 - **Dark Mode Toggle**: Users can switch between light and dark mode.
 - **Business Cards Management**: Users can create, view, and manage business cards.
 - **Favorites System**: Users can mark business cards as favorites.
-- **Admin Dashboard**: Allows administrators to manage users and content.
 
 ## Technologies Used
 - **Frontend**: React, CSS (with responsive design), React Icons
